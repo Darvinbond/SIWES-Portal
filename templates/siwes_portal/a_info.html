@@ -1,0 +1,29 @@
+{% extends 'siwes_portal/a_home.html' %} {% block content %}
+<div style="width: 96%" class="sc">
+  {% comment %}
+  <h1>
+    <u
+      >{{request.session.s_data.last_name}}
+      {{request.session.s_data.first_name}}</u
+    >
+  </h1>
+  {% endcomment %}
+  <p>&nbsp > <a href="/st_home">Home</a></p>
+  <div class="scfm">
+    <table class="table1">
+      <tr>
+        <th>Email:</th>
+        <td>{{request.session.a_data.email}}</td>
+      </tr>
+      <tr>
+        <th>Phone Number:</th>
+        <td>{{request.session.a_data.phone}}</td>
+      </tr>
+      <tr>
+        <th>Sex:</th>
+        <td>{{request.session.a_data.gender}} Level</td>
+      </tr>
+    </table>
+  </div>
+</div>
+{% endblock %}

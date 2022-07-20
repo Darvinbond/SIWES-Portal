@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{% static 'css/style.css' %}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="main">
+        <div class="panel">
+            <div class="ul">
+                <a href="/st_home"><div class="li">Information</div></a>
+                <a href="/st_change"><div class="li">Change Info</div></a>
+                <a href="/st_report"><div class="li">Weekly Report</div></a>
+                <a href="/st_work"><div class="li">Work Details</div></a>
+                <a href="/st_msg"><div class="li">Message(s) <div class="badge">{{request.session.s_data.mssg_no}}</div></div></a>
+                <a  href="/api/s_logout"><div class="li">Logout</div>
+                </div>
+        </div>
+        <div class="section">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+    <a href="/st_change"><div class="men">
+      {{request.session.s_data.last_name}} {{request.session.s_data.first_name}}
+    </div></a>
+
+    <script src="{%static 'js/moment.js'%}"></script>
+    <script src="{%static 'js/jquery-3.5.1.js'%}"></script>
+    <script src="{%static 'js/main.js'%}"></script>
+  </body>
+</html>

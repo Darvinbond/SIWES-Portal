@@ -1,0 +1,40 @@
+{% extends 'siwes_portal/s_home.html' %} {% block content %}
+<div class="sci">
+  {%if err == "No"%}
+  <div class="suc">
+    {{message}}
+  </div>
+  {%elif err == "Yes"%}
+  <div class="err">
+    {{message}}
+  </div>
+  {%endif%}
+    <div class="bc"><p>&nbsp > <a href="/st_home">Home</a> > Message</p></div>
+  <div class="scfmi">
+      <div class="dv">
+
+      
+      <div class="msg_box">
+        {%for i in request.session.s_data.mssg%}
+            <div class="msg">
+                <div class="inff">
+                    <div class="time">{{i.created_at}}</div>
+                    <form class="sup_name_form" method="post" action="http://127.0.0.1:8000/api/del_mssg">
+                      {% csrf_token %}
+                      <input name="id" type="text" value={{i.id}} hidden>
+                      <input type="submit" class="sup_name" value="Delete" />
+                    </form>
+                </div>
+                <div class="ms">
+                    <div class="prev">{{i.content}}</div> 
+                </div>
+            </div>
+            <div class="content">
+                {{i.content}}
+            </div>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

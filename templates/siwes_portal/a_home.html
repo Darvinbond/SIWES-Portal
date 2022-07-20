@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{% static 'css/adm.css' %}"
+      type="text/css"
+    />
+  </head>
+  <body style="margin: 0px; padding: 0px">
+    <div class="main">
+      <div class="panel">
+          <div class="ul">
+              <a href="/ad_home"><div class="li">Information</div></a>
+              <a href="/ad_change"><div class="li">Change Info</div></a>
+              <a href="/ad_register"><div class="li">Register Student</div></a>
+              <a href="/ad_students"><div class="li">Students</div></a>
+              <a  href="/ad_msg"><div class="li">Message</div></a>
+              <a  href="/api/a_logout"><div class="li">Logout</div></a>
+              </div>
+      </div>
+      <div class="section">
+          {% block content %}
+
+          {% endblock %}
+      </div>
+  </div>
+    <di class="men">
+      {{request.session.a_data.last_name}} {{request.session.a_data.first_name}}
+    </div>
+
+    <script src="{%static 'js/moment.js'%}"></script>
+    <script src="{%static 'js/jquery-3.5.1.js'%}"></script>
+    <script src="{%static 'js/main.js'%}"></script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+{% extends 'siwes_portal/s_home.html' %} 
+{% block content %} 
+    
+    <form class="cng" method="post" action="http://127.0.0.1:8000/api/s_report">
+    {% csrf_token %}
+    <!-- <div style="width: 600px; height: 100%;" class="err">
+        {{request.session.repo}}
+    </div> -->
+    {%if request.session.repo == False %}
+        <div class="err">
+            Report Already submited for this week.
+        </div>
+    {%elif request.session.repo == True %} 
+        <div class="suc">
+            Sent!
+        </div>
+    {%elif request.session.repo == "gffjjh"%} 
+        <div class="err">
+            Make sure all fields are filled.
+        </div>
+    {%endif%}
+    <p>&nbsp > <a href="/st_home">Home</a> > Weekly Report</p>
+    <div
+        style="
+        width: 85%;
+        padding-top: 20px;
+        padding-left: 100px;
+        align-content: center;
+        text-align: center;
+        display: block;
+        "
+    >
+        <input
+        style="width: 12%; float: left; margin: 0px"
+        class="inp"
+        type="date"
+        placeholder="Firstname"
+        name="mon_date"
+        />
+        <textarea
+        name="mon"
+        rows="5"
+        cols="88%"
+        placeholder="Mondays Report"
+        ></textarea>
+    </div>
+    <div
+        style="
+        width: 85%;
+        padding-left: 100px;
+        align-content: center;
+        text-align: center;
+        display: block;
+        "
+    >
+        <input
+        style="width: 12%; float: left; margin: 0px"
+        class="inp"
+        type="date"
+        placeholder="Firstname"
+        name="tue_date"
+        />
+        <textarea
+        name="tue"
+        rows="5"
+        cols="88%"
+        placeholder="Tuesday Report"
+        ></textarea>
+    </div>
+    <div
+        style="
+        width: 85%;
+        padding-left: 100px;
+        align-content: center;
+        text-align: center;
+        display: block;
+        "
+    >
+        <input
+        style="width: 12%; float: left; margin: 0px"
+        class="inp"
+        type="date"
+        placeholder="Firstname"
+        name="wed_date"
+        />
+        <textarea
+        name="wed"
+        rows="5"
+        cols="88%"
+        placeholder="Wednesday Report"
+        ></textarea>
+    </div>
+    <div
+        style="
+        width: 85%;
+        padding-left: 100px;
+        align-content: center;
+        text-align: center;
+        display: block;
+        "
+    >
+        <input
+        style="width: 12%; float: left; margin: 0px"
+        class="inp"
+        type="date"
+        placeholder="Firstname"
+        name="thur_date"
+        />
+        <textarea
+        name="thur"
+        rows="5"
+        cols="88%"
+        placeholder="Thursday Report"
+        ></textarea>
+    </div>
+    <div
+        style="
+        width: 85%;
+        padding-left: 100px;
+        align-content: center;
+        text-align: center;
+        display: block;
+        "
+    >
+        <input
+        style="width: 12%; float: left; margin: 0px"
+        class="inp"
+        type="date"
+        placeholder="Firstname"
+        name="fri_date"
+        />
+        <textarea
+        name="fri"
+        rows="5"
+        cols="88%"
+        placeholder="Friday Report"
+        ></textarea>
+    </div>
+    <input
+        name="student_id"
+        type="text"
+        value="{{request.session.s_data.student_id}}"
+        hidden
+    />
+    <input value={{request.session.todays_date}} name="date_signed" type="date" hidden/>
+    <input value={{request.session.s_data.student_id}} name="student_id" type="text" hidden/>
+
+    <input class="btn1" type="submit" value="Upload" />
+    </form>
+{% endblock %}

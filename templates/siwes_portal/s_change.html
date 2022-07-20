@@ -1,0 +1,46 @@
+{% extends 'siwes_portal/s_home.html' %} {% block content %}
+<form class="cng" method="post" action="http://127.0.0.1:8000/api/c_student">
+  {% csrf_token %}
+  {%if err == "No"%}
+    <div class="suc">
+      {{message}}
+    </div>
+    {%elif err == "Yes"%}
+    <div class="err">
+      {{message}}
+    </div>
+    {%endif%}
+  <div class="bc"><p>&nbsp > <a href="/st_home">Home</a> > Change Info</p></div>
+  <div class="inp-container">
+  <input
+    class="inp"
+    type="text"
+    placeholder="Firstname"
+    name="first_name"
+    value="{{request.session.s_data.first_name}}"
+  />
+  <input
+    class="inp"
+    type="text"
+    placeholder="Lastname"
+    name="last_name"
+    value="{{request.session.s_data.last_name}}"
+  />
+  <input
+    class="inp"
+    type="text"
+    placeholder="Department"
+    name="department"
+    value="{{request.session.s_data.department}}"
+  />
+  <input
+    class="inp"
+    type="password"
+    placeholder="Password"
+    name="password"
+    value="{{request.session.s_data.password}}"
+  />
+  <input class="btn1" type="submit" value="Update" />
+</div>
+</form>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <form action="http://127.0.0.1:8000/api/student" method="POST">
+      {% csrf_token %}
+      <input name="first_name" type="text" placeholder="Firstname" />
+      <input name="last_name" type="text" placeholder="Lastname" />
+      <input name="matric" type="text" placeholder="Matric Number" disabled />
+      <input name="department" type="text" placeholder="Department" />
+      <select name="level" placeholder="Level">
+        <option>100</option>
+        <option>200</option>
+        <option>300</option>
+        <option>400</option>
+        <option>500</option>
+        <option>600</option>
+        <option>700</option>
+      </select>
+      <input name="email" type="email" placeholder="Email" />
+      <select name="gender" placeholder="Gender">
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+      <input name="password" type="password" placeholder="Password" />
+      <input type="submit" value="SignUp" />
+    </form>
+  </body>
+</html>

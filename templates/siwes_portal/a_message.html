@@ -1,0 +1,31 @@
+{% extends 'siwes_portal/a_home.html' %} 
+{% block content %} 
+
+    <form class="cng" method="post" action="http://127.0.0.1:8000/api/mssg_st">
+      
+    {% csrf_token %}
+    <p>&nbsp > <a href="/st_home">Home</a> > Message</p>
+    {%if err == "No"%}
+    <div class="suc">
+      {{message}}
+    </div>
+    {%elif err == "Yes"%}
+    <div class="err">
+      {{message}}
+    </div>
+    {%endif%}
+
+    <div class="search">
+        <div class="message-container">
+          <div class="msg-container">
+            <i class="fas fa-search"></i>
+            <textarea
+              name="content"
+              placeholder="Message to students under your supervision"
+            ></textarea>
+            <input name="sup_id" type="text" value="{{request.session.a_data.sup_id}}" hidden>
+          </div>
+          <input type="submit"></input>
+        </div>
+    </form>
+{% endblock %}

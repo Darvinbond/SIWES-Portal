@@ -1,0 +1,53 @@
+{% extends 'siwes_portal/a_home.html' %} 
+{% block content %} 
+    <form class="cng" method="post" action="http://127.0.0.1:8000/api/find_st">
+    {% csrf_token %}
+    {%if err == "No"%}
+    <div class="suc">
+      {{message}}
+    </div>
+    {%elif err == "Yes"%}
+    <div class="err">
+      {{message}}
+    </div>
+    {%endif%}
+    <p>&nbsp > <a href="/st_home">Home</a> > Weekly Report</p>
+    <div class="search">
+        <div class="search-container">
+          <div class="input-container">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="filter-jobs"
+              name="matric"
+              placeholder="Filter by Matric Number"
+            />
+          </div>
+          <input type="submit" class="button-container"></input>
+        </div>
+    </form>
+    <div class="results">
+      {%if request.session.found %}
+      <form method="post" action="http://127.0.0.1:8000/api/reg_st">
+      {%csrf_token%}
+      <ul class="uu">
+        <li class="ll">
+            <input name="matric" type="text" value="{{request.session.found.matric}}" hidden>
+            <div>{{request.session.found.last_name}} {{request.session.found.first_name}}</div>
+            <div>{{request.session.found.matric}}</div>
+            <div>{{request.session.found.level}}</div>
+            <div>{{request.session.found.department}}</div>
+            <input type="submit" value="Register" class="reg_cta" />
+        </li>
+      </ul>
+    </form>
+      {%else%}
+      <ul class="uu">
+        <li>
+          <div>
+            Must be a valid Matric number!</div>
+        </li>
+      </ul>
+    </div>
+    {%endif%} 
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'siwes_portal/a_home.html' %} {% block content %}
+<form class="cng" method="post" action="http://127.0.0.1:8000/api/c_admin">
+  {% csrf_token %}
+  {%if err == "No"%}
+    <div class="suc">
+      {{message}}
+    </div>
+    {%elif err == "Yes"%}
+    <div class="err">
+      {{message}}
+    </div>
+    {%endif%}
+  <div class="bc"><p>&nbsp > <a href="/st_home">Home</a> > Change Info</p></div>
+  <div class="inp-container">
+  <input
+    class="inp"
+    type="text"
+    placeholder="Firstname"
+    name="first_name"
+    value="{{request.session.a_data.first_name}}"
+    autocomplete="off"
+  />
+  <input
+    class="inp"
+    type="text"
+    placeholder="Lastname"
+    name="last_name"
+    value="{{request.session.a_data.last_name}}"
+    autocomplete="off"
+  />
+  <input
+    class="inp"
+    type="text"
+    placeholder="Phone Number"
+    name="phone"
+    value="{{request.session.a_data.phone}}"
+    autocomplete="off"
+  />
+  <input
+    class="inp"
+    type="password"
+    placeholder="Password"
+    name="password"
+    value="{{request.session.a_data.password}}"
+    autocomplete="off"
+  />
+  <input class="btn1" type="submit" value="Update" />
+</div>
+</form>
+{% endblock %}

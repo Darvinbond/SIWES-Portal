@@ -1,0 +1,89 @@
+{% extends 'siwes_portal/s_home.html' %} {% block content %}
+<form class="wd" method="post" action="http://127.0.0.1:8000/api/s_w_details">
+  {% csrf_token %}
+  <div class=""><p>&nbsp > <a href="/st_home">Home</a> > Work Details</p></div>
+  <div class="mnn">
+  <div class="rw">
+    <input
+      class=""
+      type="text"
+      placeholder="Organization Name"
+      name="org_name"
+      autocomplete="off"
+      value="{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.org_name}}{%endif%}"
+    />
+    <input
+      class=""
+      type="text"
+      placeholder="Phone Number"
+      name="phone"
+      autocomplete="off"
+      value="{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.phone}}{%endif%}"
+    />
+  </div>
+  <div class="rw">
+    <input
+      class=""
+      type="text"
+      placeholder="Department"
+      name="department"
+      autocomplete="off"
+      value="{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.department}}{%endif%}"
+    />
+    <input
+      class=""
+      type="text"
+      placeholder="Local Government Area"
+      name="lga"
+      autocomplete="off"
+      value="{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.lga}}{%endif%}"
+    />
+  </div>
+  <div class="onc">
+    <input
+      class=""
+      type="email"
+      placeholder="Organization Email"
+      name="email"
+      autocomplete="off"
+      value="{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.email}}{%endif%}"
+    />
+  </div>
+  <div class="rw">
+    <span class="cl">
+      <label>Start Date</label><br />
+      <input
+        class=""
+        type="date"
+        placeholder="Phone Number"
+        name="date_start"
+        autocomplete="off"
+        value="{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.date_start}}{%endif%}"
+      />
+    </span>
+    <div class="cl">
+      <label>Expected End Date</label><br />
+      <input
+        class=""
+        type="date"
+        placeholder="Phone Number"
+        name="date_end"
+        autocomplete="off"
+        value="{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.date_end}}{%endif%}"
+      />
+      <input
+        type="text"
+        name="student_id"
+        value="{{request.session.s_data.student_id}}"
+        hidden
+      />
+    </div>
+  </div>
+  <div class="rw">
+    <textarea name="address" placeholder="Address" autocomplete="off" >{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.address}}{%endif%}</textarea>
+    <textarea name="job_desc" placeholder="Job Description" autocomplete="off" >{%if request.session.o_data == ''%}{%else%}{{request.session.o_data.job_desc}}{%endif%}</textarea>
+  </div>
+</div>
+<input class="btn1" type="submit" value="Update" />
+</form>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'siwes_portal/s_home.html' %} {% block content %}
+<div class="sc">
+  <div class="bc"><p>&nbsp > <a href="/st_home">Home</a></p></div>
+  <div class="scfm">
+    <table class="table1">
+      <tr>
+        <th>Email:</th>
+        <td>{{request.session.s_data.email}}</td>
+      </tr>
+      <tr>
+        <th>Matric Number:</th>
+        <td>{{request.session.s_data.matric}}</td>
+      </tr>
+      <tr>
+        <th>Department:</th>
+        <td>{{request.session.s_data.department}}</td>
+      </tr>
+      <tr>
+        <th>Level:</th>
+        <td>{{request.session.s_data.level}} Level</td>
+      </tr>
+      <tr>
+        <th>Gender:</th>
+        <td>{{request.session.s_data.gender}}</td>
+      </tr>
+    </table>
+    <table class="table2">
+      {% if request.session.o_data == "" %}
+        <pre style="padding-top: 200px">
+          There is no Organization Information to show
+          <i>- Please upload your work details</i>
+        </pre>
+      {%else%}
+
+        <tr>
+          <th>Organization Name:</th>
+          <td>{{request.session.o_data.org_name}}</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>{{request.session.o_data.email}}</td>
+        </tr>
+        <tr>
+          <th>Start Date:</th>
+          <td>{{request.session.o_data.date_start}}</td>
+        </tr>
+        <tr>
+          <th>End Date:</th>
+          <td>{{request.session.o_data.date_end}}</td>
+        </tr>
+        <tr>
+          <th>Job Description:</th>
+          <td style="height: 90px !important;">{{request.session.o_data.job_desc}}</td>
+        </tr>
+      {%endif%}
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{% static 'css/style.css' %}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="men">
+      Student
+  </div>
+    {%if message%}
+    <div class="err">
+      {{message}}
+    </div>
+    {%endif%}
+    <form
+      class="form"
+      action="http://127.0.0.1:8000/api/l_student"
+      method="GET"
+    >
+    <div class="hp">
+      <a href="/"><span>Homepage</span></a>
+    </div>
+      <h2>Login</h2>
+      {% csrf_token %}
+      <div class="ver">
+        <input
+          name="matric"
+          type="text"
+          placeholder="Matric Number"
+          autocomplete="off"
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="off"
+        />
+      </div>
+      <input class="btn" type="submit" value="SignIn" /><br>
+      <div class="dn">
+        <a style="color: rgb(43, 43, 245);" href="/signup">Signup</a><br><br>
+        <a style="color: rgb(43, 43, 245);" href="/a_signin">Supervisor</a>
+      </div>
+    </form>
+  </body>
+</html>

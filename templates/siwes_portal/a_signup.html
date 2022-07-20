@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{% static 'css/adm.css' %}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="men">
+      Supervisor
+  </div>
+    {%if message%}
+    <div class="err">
+      {{message}}
+    </div>
+    {%endif%}
+    <form
+      class="form"
+      action="http://127.0.0.1:8000/api/su_admin"
+      method="POST"
+    >
+      <h2>SignUp</h2>
+      {% csrf_token %}
+      <div class="sec">
+        <input
+          name="first_name"
+          type="text"
+          placeholder="Firstname"
+          autocomplete="off"
+          required
+        />
+        <input
+          name="last_name"
+          type="text"
+          placeholder="Lastname"
+          autocomplete="off"
+          required
+        />
+      </div>
+      <div class="sec">
+        <input
+          name="phone"
+          type="text"
+          placeholder="Phone"
+          autocomplete="off"
+          required
+        />
+        <select name="gender" placeholder="Gender"
+        required>
+          <option>Sex</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+      <div class="sec">
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          autocomplete="off"
+          required
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="off"
+          required
+        />
+      </div>
+      <input class="btn" type="submit" value="SignUp" /><br>
+      <a style="color: rgb(43, 43, 245);" href="/a_signin">I have an account.</a><br><br>
+    </form>
+  </body>
+</html>

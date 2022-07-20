@@ -1,0 +1,24 @@
+{% extends 'siwes_portal/a_home.html' %} {% block content %}
+<div class="al">
+<p>&nbsp > <a href="/st_home">Home</a> > Students</p>
+<div class="all_students">
+{%if not request.session.a_std == ""%}
+  <div class="lst">
+    {%for i in request.session.a_std%}
+      <div class="each">
+        <div class="lnt">{{i.last_name}} {{i.first_name}}</div>
+        <div>{{i.matric}}</div>
+        <div>{{i.level}}</div>
+        <div class="lnt">{{i.department}}</div>
+      </div>
+    {%endfor%}
+  </div>
+{%else%}
+  <div class="ns">
+    You have not registrered any student under you supervision
+  </div>
+{%endif%}
+</div>
+  
+</div>
+{% endblock %}

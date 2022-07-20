@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{% static 'css/style.css' %}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="men">
+      Student
+  </div>
+    {%if message%}
+    <div class="err">
+      {{message}}
+    </div>
+    {%endif%}
+    
+    <form
+      class="form"
+      action="http://127.0.0.1:8000/api/su_student"
+      method="POST"
+    >
+      <h2>SignUp</h2>
+      {% csrf_token %}
+      <div class="sec">
+        <input
+          name="first_name"
+          type="text"
+          placeholder="Firstname"
+          autocomplete="off"
+        />
+        <input
+          name="last_name"
+          type="text"
+          placeholder="Lastname"
+          autocomplete="off"
+        />
+      </div>
+      <div class="sec">
+        <input
+          name="matric"
+          type="text"
+          placeholder="Matric Number"
+          autocomplete="off"
+        />
+        <input
+          name="department"
+          type="text"
+          placeholder="Department"
+          autocomplete="off"
+        />
+      </div>
+      <div class="sec">
+        <select name="level" placeholder="Level">
+          <option>Level</option>
+          <option>100</option>
+          <option>200</option>
+          <option>300</option>
+          <option>400</option>
+          <option>500</option>
+          <option>600</option>
+          <option>700</option>
+        </select>
+        <select name="gender" placeholder="Gender">
+          <option>Sex</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+      <div class="sec">
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          autocomplete="off"
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="off"
+        />
+      </div>
+      <input class="btn" type="submit" value="SignUp" /><br>
+      <a style="color: rgb(43, 43, 245);" href="/signin">I have an account</a>
+    </form>
+
+  </body>
+</html>
